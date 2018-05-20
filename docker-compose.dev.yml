@@ -1,0 +1,24 @@
+version: '2.1'
+services: 
+  config:
+    build: config
+    ports:
+      - 8888:8888
+
+  applications-postgresql:
+    restart: always
+    image: sameersbn/postgresql:9.6-2
+    ports:
+      - "5432:5432"
+    environment:
+      - DEBUG=false
+      - DB_USER=postgres
+      - DB_PASS=${POSTGRESQL_PASSWORD}
+      - DB_NAME=applications
+    volumes:
+      - /srv/docker/postgresql:/var/lib/postgresql
+ 
+  applications-service:
+    build: applications-service
+    ports:
+      - 6000:6000

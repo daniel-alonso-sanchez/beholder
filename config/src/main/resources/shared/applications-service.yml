@@ -1,0 +1,21 @@
+server:
+  context-path: /aplications
+  port: 6000
+  
+spring:
+    jpa:
+        database: POSTGRESQL
+        show-sql: true
+        hibernate.ddl-auto: update
+    datasource:
+      type: com.zaxxer.hikari.HikariDataSource
+      url: jdbc:postgresql://applications-postgresql:5432/applications
+      username: postgres
+      password: ${POSTGRESQL_PASSWORD}
+# Hikari will use the above plus the following to setup connection pooling
+      hikari.minimumIdle: 5
+      hikari.maximumPoolSize: 20
+      hikari.idleTimeout: 30000
+      hikari.poolName: SpringBootJPAHikariCP
+      hikari.maxLifetime: 2000000
+      hikari.connectionTimeout: 30000
