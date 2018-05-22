@@ -1,17 +1,22 @@
 server:
-  context-path: /aplications
-  port: 6000
+  context-path: /applications
+  port: 8889
   
 spring:
     jpa:
+        properties:
+           hibernate:
+              dialect: org.hibernate.dialect.PostgreSQLDialect
         database: POSTGRESQL
         show-sql: true
         hibernate.ddl-auto: update
     datasource:
       type: com.zaxxer.hikari.HikariDataSource
+      driver-class-name: org.postgresql.Driver
       url: jdbc:postgresql://applications-postgresql:5432/applications
       username: postgres
-      password: ${POSTGRESQL_PASSWORD}
+      #password: ${POSTGRESQL_PASSWORD}
+      password: pgpassword
 # Hikari will use the above plus the following to setup connection pooling
       hikari.minimumIdle: 5
       hikari.maximumPoolSize: 20

@@ -4,21 +4,27 @@ services:
     build: config
     ports:
       - 8888:8888
-
+    environment:    
+      - POSTGRESQL_PASSWORD=${POSTGRESQL_PASSWORD}
+    
   applications-postgresql:
     restart: always
-    image: sameersbn/postgresql:9.6-2
+    image: postgres:9.6.9
     ports:
       - "5432:5432"
     environment:
       - DEBUG=false
-      - DB_USER=postgres
-      - DB_PASS=${POSTGRESQL_PASSWORD}
-      - DB_NAME=applications
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${POSTGRESQL_PASSWORD}
+      - POSTGRES_DB=applications
     volumes:
       - /srv/docker/postgresql:/var/lib/postgresql
- 
+  
   applications-service:
     build: applications-service
+    restart: on-failure
+    depends_on:
+      - config        
+      - applications-postgresql  
     ports:
-      - 6000:6000
+      - 8889:8889
