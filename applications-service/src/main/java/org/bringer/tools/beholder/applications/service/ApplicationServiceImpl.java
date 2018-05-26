@@ -26,7 +26,7 @@ public class ApplicationServiceImpl implements IApplicationService {
 
 	@Override
 	@Transactional(readOnly=true)
-	public List<Application> findAll(Application app) {
+	public List<Application> findAll() {
 		
 		return this.appRepository.findAll();
 	}
