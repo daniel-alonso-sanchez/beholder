@@ -11,6 +11,8 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import lombok.Data;
+@Data
 @Entity
 @Table(name = "applications")
 public class Application implements Serializable {
@@ -27,30 +29,5 @@ public class Application implements Serializable {
 	@NotBlank
 	private String url;
 
-	
-
-	public UUID getId() {
-		return id;
-	}
-
-	public void setId(UUID id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
 
 }
