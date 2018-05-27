@@ -31,7 +31,7 @@ public class ApplicationController {
 	public List<Application> findAll(){
 		return service.findAll();		
 	}
-	@GetMapping(path="/{name}",produces= {MediaType.APPLICATION_JSON_VALUE})	
+	@GetMapping(path="/{name}")	
 	public List<Application> findByName(
 			@PathVariable("name")
 			String name){

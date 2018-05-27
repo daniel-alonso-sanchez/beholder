@@ -1,6 +1,6 @@
 logging:
   level:
-    root: ERROR
+    root: INFO
 spring:
   cloud.config.enabled: false
   datasource:
