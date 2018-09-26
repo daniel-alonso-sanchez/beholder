@@ -6,7 +6,11 @@ services:
       - 8888:8888
     environment:    
       - POSTGRESQL_PASSWORD=${POSTGRESQL_PASSWORD}
-    
+  rabbitmq-server:
+    build: rabbitmq-server
+    ports:
+      - "5672:5672"
+      - "15672:15672"
   applications-postgresql:
     restart: always
     image: postgres:9.6.9
@@ -26,5 +30,6 @@ services:
     depends_on:
       - config        
       - applications-postgresql  
+      - rabbitmq-server
     ports:
       - 8889:8889

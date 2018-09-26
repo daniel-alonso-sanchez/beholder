@@ -3,6 +3,11 @@ server:
   port: 8889
   
 spring:
+    rabbitmq:
+       host: rabbitmq-server
+       port: 5672
+       username: guest
+       password: guest
     jpa:
         properties:
            hibernate:
