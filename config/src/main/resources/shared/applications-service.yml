@@ -1,7 +1,12 @@
 server:
   context-path: /applications
   port: 8889
-  
+security:
+  basic:
+    enabled: false
+management:
+  security:
+    enabled: false  
 spring:
     rabbitmq:
        host: rabbitmq-server
@@ -11,10 +16,17 @@ spring:
     jpa:
         properties:
            hibernate:
-              dialect: org.hibernate.dialect.PostgreSQLDialect
+              dialect: org.hibernate.dialect.PostgreSQLDialect              
+           javax:
+              persistence:
+                schema-generation:
+                  create-source: metadata
+                  scripts:
+                    action: create
+                    create-target: create.sql
         database: POSTGRESQL
         show-sql: true
-        hibernate.ddl-auto: update
+        hibernate.ddl-auto: none
     datasource:
       type: com.zaxxer.hikari.HikariDataSource
       driver-class-name: org.postgresql.Driver

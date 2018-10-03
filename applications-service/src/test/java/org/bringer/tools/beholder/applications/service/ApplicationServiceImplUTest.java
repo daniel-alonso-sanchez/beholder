@@ -40,7 +40,7 @@ public class ApplicationServiceImplUTest {
 		});
 		
 		service.add(new Application());
-		verify(appRepository, times(1)).save(any(Application.class));	
+		verify(appRepository, times(1)).saveAndFlush(any(Application.class));	
 	}
 
 }

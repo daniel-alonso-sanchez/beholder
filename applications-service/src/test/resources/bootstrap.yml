@@ -5,7 +5,7 @@ spring:
     config:
       enabled: false
   datasource:
-    url: jdbc:h2:mem:example-app;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:example-app;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     platform: h2
     username: sa
     password: null
@@ -13,8 +13,8 @@ spring:
   jpa:
       database-platform: org.hibernate.dialect.H2Dialect
       hibernate:
-        ddl-auto: update
-      properties:
+        ddl-auto: none
+      properties:       
         hibernate:
           show_sql: true
           use_sql_comments: true
